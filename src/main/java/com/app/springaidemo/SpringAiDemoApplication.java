@@ -3,7 +3,7 @@ package com.app.springaidemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.app")
 public class SpringAiDemoApplication {
 
     public static void main(String[] args) {
