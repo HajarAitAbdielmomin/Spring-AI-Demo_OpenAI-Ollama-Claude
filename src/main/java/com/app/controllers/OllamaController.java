@@ -1,20 +1,21 @@
 package com.app.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.ai.anthropic.AnthropicChatModel;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/anthropic")
+@RequestMapping("/api/ollama")
 @CrossOrigin("*")
-public class AnthropicController {
+public class OllamaController {
     private final ChatClient chatClient;
 
-    public AnthropicController(AnthropicChatModel chatModel) {
+    public OllamaController(OllamaChatModel chatModel) {
         this.chatClient = ChatClient.create(chatModel);
     }
-
 
     @GetMapping("/{message}")
     public ResponseEntity<String> getAnswer(@PathVariable String message){
