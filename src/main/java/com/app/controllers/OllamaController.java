@@ -1,8 +1,8 @@
 package com.app.controllers;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.ai.anthropic.AnthropicChatModel;
+
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,13 @@ public class OllamaController {
 
     @GetMapping("/{message}")
     public ResponseEntity<String> getAnswer(@PathVariable String message){
-        String response = chatClient.prompt(message).call().content();
+
+        ChatResponse chatResponse = chatClient.prompt(message).call().chatResponse();
+
+        System.out.println(chatResponse.getMetadata().getModel());
+
+        String response = chatResponse.getResult().getOutput().getText();
+
         return ResponseEntity.ok(response);
     }
 }
