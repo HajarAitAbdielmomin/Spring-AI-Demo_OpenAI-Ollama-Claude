@@ -17,10 +17,10 @@ public class OllamaController {
         this.chatClient = ChatClient.create(chatModel);
     }
 
-    @GetMapping("/{message}")
-    public ResponseEntity<String> getAnswer(@PathVariable String message){
+    @GetMapping("/{prompt}")
+    public ResponseEntity<String> getAnswer(@PathVariable String prompt){
 
-        ChatResponse chatResponse = chatClient.prompt(message).call().chatResponse();
+        ChatResponse chatResponse = chatClient.prompt(prompt).call().chatResponse();
 
         System.out.println(chatResponse.getMetadata().getModel());
 

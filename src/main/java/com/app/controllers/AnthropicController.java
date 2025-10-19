@@ -16,9 +16,9 @@ public class AnthropicController {
     }
 
 
-    @GetMapping("/{message}")
-    public ResponseEntity<String> getAnswer(@PathVariable String message){
-        String response = chatClient.prompt(message).call().content();
+    @GetMapping("/{prompt}")
+    public ResponseEntity<String> getAnswer(@PathVariable String prompt){
+        String response = chatClient.prompt(prompt).call().content();
         return ResponseEntity.ok(response);
     }
 }

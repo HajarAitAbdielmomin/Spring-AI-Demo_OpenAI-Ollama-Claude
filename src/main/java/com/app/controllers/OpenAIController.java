@@ -13,9 +13,9 @@ public class OpenAIController {
     private final OpenAiChatModel chatModel;
 
 
-    @GetMapping("/{message}")
-    public ResponseEntity<String> getAnswer(@PathVariable String message){
-        String response = chatModel.call(message);
+    @GetMapping("/{prompt}")
+    public ResponseEntity<String> getAnswer(@PathVariable String prompt){
+        String response = chatModel.call(prompt);
         return ResponseEntity.ok(response);
     }
 }
