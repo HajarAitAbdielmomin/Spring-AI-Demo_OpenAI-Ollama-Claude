@@ -4,6 +4,7 @@
     border-radius: 20px;
     padding: 1px;
     background: linear-gradient(180deg, #ffd9b3, #b4f1b4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .prompt-header {
