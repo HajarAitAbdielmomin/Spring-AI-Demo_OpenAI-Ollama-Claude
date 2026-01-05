@@ -52,9 +52,13 @@
 .response-box {
     margin-top: 1rem;
     font-size: 0.9rem;
-    min-height: 250px;
-    min-width: 270px;
+    min-height: 200px;
+    max-height: 200px;
+    color: black;
+    min-width: 300px;
+    max-width: 300px;
     white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 .model-card-footer {
