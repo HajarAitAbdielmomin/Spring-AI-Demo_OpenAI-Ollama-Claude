@@ -19,3 +19,6 @@
   flex: 1;
   min-height: 200px;
 }
+.chat-input {
+  padding-top: 2rem;
+}
