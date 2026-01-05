@@ -11,15 +11,15 @@ export default function ChatCard({
                                               title,
                                               subtitle,
                                               response,
-                                              status = "pending"
+                                              status
                                           }: Props) {
     return (
         <div className="model-card">
             <div className="model-card-header">{title.toUpperCase()}</div>
 
             <div className="model-card-body">
-                <h3>{title}</h3>
-                <p>{subtitle}</p>
+                <h3>{subtitle}</h3>
+
 
                 <span className={`status ${status}`}>{status}</span>
 
@@ -30,6 +30,8 @@ export default function ChatCard({
 
             <div className="model-card-footer">
                 <span>⏱ 0.8s</span>
+                <span>📦 Tokens: 120</span>
+
             </div>
         </div>
     );
