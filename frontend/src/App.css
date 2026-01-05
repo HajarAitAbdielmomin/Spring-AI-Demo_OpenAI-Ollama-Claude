@@ -6,6 +6,39 @@
 
 }
 
+.description {
+  max-width: 900px;
+  margin: 2rem auto 1rem;
+}
+
+.description h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.guide {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.guide a {
+  margin-left: 6px;
+  color: #22c55e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.guide a:hover {
+  text-decoration: underline;
+}
 
 .read-the-docs {
   color: #888;
