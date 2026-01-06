@@ -3,11 +3,28 @@ import './App.css'
 import InputBox from "./components/InputField/InputBox.tsx";
 import {useState} from "react";
 import ChatCard from "./components/ChatCard/ChatCard.tsx";
+import {openAiUrl, claudeUrl, ollamaUrl} from "./api/aiService.ts";
+import {useFetch} from "./hooks/useFetch.ts";
 
 function App() {
     const [prompt, setPrompt] = useState("");
+    const openai = useFetch<string>();
+    const claude = useFetch<string>();
+    const ollama = useFetch<string>();
 
-  return (
+    const onSubmit = async () => {
+        try {
+            await Promise.all([
+                openai.fetchData(openAiUrl(prompt)),
+                claude.fetchData(claudeUrl(prompt)),
+                ollama.fetchData(ollamaUrl(prompt))
+            ]);
+        } catch {
+            console.error("Error fetching data");
+        }
+    };
+
+    return (
       <>
           <div className="container">
               <div className="description">
@@ -33,28 +50,38 @@ function App() {
                   <ChatCard
                       title="OpenAI"
                       subtitle="GPT-3"
-                      status="done"
-                      response="This is the response from OpenAI..."
+                      response={openai.data}
+                      loading={openai.loading}
+                      error={openai.error}
+                      duration={openai.duration}
+                      tokens={openai.tokens}
                   />
 
                   <ChatCard
                       title="Claude"
                       subtitle="Claude 3"
-                      status="pending"
+                      response={claude.data}
+                      loading={claude.loading}
+                      error={claude.error}
+                      duration={claude.duration}
+                      tokens={claude.tokens}
                   />
 
                   <ChatCard
                       title="Ollama"
                       subtitle="deepseek-r1"
-                      status="error"
-                      response="Connection refused"
+                      response={ollama.data}
+                      loading={ollama.loading}
+                      error={ollama.error}
+                      duration={ollama.duration}
+                      tokens={ollama.tokens}
                   />
               </div>
               <div className="chat-input">
               <InputBox
                   value={prompt}
                   onChange={setPrompt}
-                  onSubmit={() => console.log(prompt)}
+                  onSubmit={() => onSubmit()}
               />
               </div>
           </div>
