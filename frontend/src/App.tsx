@@ -24,6 +24,13 @@ function App() {
         }
     };
 
+    const onReset = () => {
+        setPrompt("");
+        openai.reset?.();
+        claude.reset?.();
+        ollama.reset?.();
+    };
+
     return (
       <>
           <div className="container">
@@ -83,6 +90,9 @@ function App() {
                   onChange={setPrompt}
                   onSubmit={() => onSubmit()}
               />
+              <button className="reset-btn" onClick={onReset}>
+                  Reset
+              </button>
               </div>
           </div>
 
