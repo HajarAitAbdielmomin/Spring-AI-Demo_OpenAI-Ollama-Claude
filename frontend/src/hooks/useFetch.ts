@@ -38,5 +38,9 @@ export function useFetch<T>() {
         }
     };
 
-    return { ...state, fetchData };
+    const reset = () => {
+        setState({ loading: false });
+    };
+
+    return { ...state, fetchData, reset };
 }
