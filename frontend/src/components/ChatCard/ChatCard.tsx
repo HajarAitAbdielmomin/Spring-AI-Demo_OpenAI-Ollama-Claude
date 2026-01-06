@@ -5,13 +5,17 @@ type Props = {
     subtitle: string;
     response?: string;
     status?: "pending" | "done" | "error";
+    duration?: number;
+    tokens?: number;
 };
 
 export default function ChatCard({
                                               title,
                                               subtitle,
                                               response,
-                                              status
+                                              status,
+                                              duration,
+                                              tokens
                                           }: Props) {
     return (
         <div className="model-card">
@@ -29,10 +33,10 @@ export default function ChatCard({
             </div>
 
             <div className="model-card-footer">
-                <span>⏱ 0.8s</span>
-                <span>📦 Tokens: 120</span>
-
+                <span>⏱ {duration ? `${duration} ms` : "--"}</span>
+                <span>📦 {tokens ?? "--"} tokens</span>
             </div>
+
         </div>
     );
 }
