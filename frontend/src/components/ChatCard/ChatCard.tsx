@@ -4,7 +4,8 @@ type Props = {
     title: string;
     subtitle: string;
     response?: string;
-    status?: "pending" | "done" | "error";
+    loading?: boolean;
+    error?: string;
     duration?: number;
     tokens?: number;
 };
@@ -13,9 +14,10 @@ export default function ChatCard({
                                               title,
                                               subtitle,
                                               response,
-                                              status,
                                               duration,
-                                              tokens
+                                              tokens,
+                                              loading,
+                                              error
                                           }: Props) {
     return (
         <div className="model-card">
@@ -24,11 +26,13 @@ export default function ChatCard({
             <div className="model-card-body">
                 <h3>{subtitle}</h3>
 
-
-                <span className={`status ${status}`}>{status}</span>
-
                 <div className="response-box">
-                    {response ?? "Waiting for response..."}
+                    {loading && <span className="thinking">Thinking...</span>}
+
+                    {error && <span className="error">Connection failed</span>}
+
+                    {!loading && !error && response}
+
                 </div>
             </div>
 
